@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<head>  <meta charset="utf-8">  
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css">
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+
+<!-- css  center vertically -->
+<style type="text/css">
+  /* centerfixed broke mobile :-( */
+  .dont-centerfixed {
+    position: fixed;
+    top: 50%; left: 50%;
+    transform: translate(-50%,-50%);
+  }
+
+  .dialogbox {
+    background-color: #eee;
+    border-radius: 9px;
+    box-shadow: 3px 3px 15px #aac;    
+    max-width: 30em; /* keep proportions. */
+  }
+
+  .signedInYes#signstate {
+    font-weight: bold;
+    text-shadow: 1px 1px 2px black, 0 0 1em #0f0, 0 0 0.2em #0f0;
+    color: white;
+  }
+  .signedInNo#signstate {
+    color: #f00;
+  }
+
+
+</style>
+</head>
+<body>
+
+{% include 'navbar_partial.jinja' %}
+
+{% block body %} your-body-here {% endblock %}
+
+</body>
+</html>
+

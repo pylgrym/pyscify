@@ -1,0 +1,23 @@
+<nav class="navbar navbar-default">
+
+  <ul class="nav navbar-nav">
+    <li class=""><a href="#"> Ancient </a></li>
+  </ul>  
+
+  <ul class="nav navbar-nav navbar-right">
+    <li>
+
+    <a href="#" id="signstate" class="{{'signedInYes' if signedInUser else 'signedInNo' }}"> 
+
+    {% if signedInUser %}   
+      (signed in as {{ signedInUser }} ) 
+    {% else %}
+      (not signed in.)
+    {% endif %}
+
+    </a>
+
+    </li>
+  </ul>  
+
+</nav>

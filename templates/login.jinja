@@ -1,0 +1,67 @@
+{% extends "frame.jinja" %}
+
+{% block body %}
+<div class="centerfixed container dialogbox">
+  <form class="not-form-horizontal" method="post">
+
+    <h2 class="form-heading"> Identify Yourself: </h2> 
+
+    <div class="form-group">
+      <div class="input-group">
+        <span class="input-group-addon"> <i class="fa fa-lg fa-user fa-fw"> </i> </span> <!-- fa-male -->
+        <input class="form-control input-lg" value="{{email}}" name="email" {{'autofocus' if (not email and not emailUnknown) else ''}} type="email" autocomplete required placeholder="<your@email.com>" >
+        
+      </div>
+    </div>
+
+    <input type="submit" style="width:0px; height:0px; position: absolute;" tabindex="-1">
+
+    <div class="form-group">
+      <div class="input-group">
+        <span class="input-group-addon"><i class="fa fa-lg fa-key fa-fw"></i></span>
+        <input class="form-control input-lg" value="{{password}}" {{ 'autofocus' if passwordEmpty else '' }} name="password" type="password" required placeholder="password">           
+      </div>
+    </div>
+
+    {% if passwordEmpty %}   
+        <span class="help-block bg-warning">Password may not be empty.</span>    
+    {% endif %}
+
+    {% if emailUnknown %}   
+          <div class="form-group">
+                <div class="bg-info">Account doesn't exist.
+                   Repeat password to create account:</div>
+            <div class="input-group">
+              <span class="input-group-addon"><i class="fa fa-lg fa-key fa-fw"></i></span>
+              <input class="form-control input-lg" value="{{password2}}" {{'autofocus' if emailUnknown else '' }} name="password2" type="password" required placeholder="password">           
+            </div>
+          </div>    
+    {% endif %}
+
+    {% if passwordWrong %}   
+        <span class="help-block bg-warning">Wrong password or email address.</span>    
+    {% endif %}
+
+    {% if passwordsMismatch %}   
+        <div class="bg-warning">Account creation failed: Mismatched passwords.</div>
+    {% endif %}
+
+    {% if accountCreatedOK %}   
+      <div class="bg-success">Account creation succeeded!
+           Welcome, doctor USERNAME.
+           Now log into your new account.</div>
+    {% endif %}
+
+
+  </form>
+</div>
+
+emailUnknown: {{ emailUnknown }}   <br>
+passwordWrong: {{ passwordWrong }} <br>
+passwordsMismatch: {{ passwordsMismatch }}   <br>
+accountCreatedOK: {{ accountCreatedOK }}   <br>
+passwordEmpty: {{ passwordEmpty }} <br>
+
+pwd,pwd2: {{ password, password2 }} <br>
+
+{% endblock %}
